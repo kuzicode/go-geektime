@@ -1,12 +1,13 @@
 
 
+# Golang中的Error处理
+
+- [Go Error](#1-golang-error-概念)
+- [Error Types](#2-error-type)
+- [Handing Error](#3-handing-error)
+
+
 # 1. Golang Error 概念
-
-
-- Go Error, Error types
-- panic, recover
-
-
 ## 1.1 Go error 本质
 
 ```golang
@@ -46,7 +47,7 @@ func main(){
 
 go error 设计理念：先判断error(==nil)，在决定value能不能用
 
-example
+example:
 ```golang
 import(
     "errors"
