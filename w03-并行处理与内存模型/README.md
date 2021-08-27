@@ -1,5 +1,11 @@
 # Golang并行处理和内存模型
 
+- Goroutine
+- Memory model
+- Package sync
+- chan
+- Package context
+
 go语言最好用的关键字：go, chan
 
 ## Processes and Threads

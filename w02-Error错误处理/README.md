@@ -2,6 +2,11 @@
 
 # 1. Golang Error 概念
 
+
+- Go Error, Error types
+- panic, recover
+
+
 ## 1.1 Go error 本质
 
 ```golang
