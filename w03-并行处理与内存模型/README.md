@@ -1,21 +1,26 @@
 # Golang并行处理和内存模型
 
-- Goroutine
-- Memory model
-- Package sync
-- chan
-- Package context
+- [Golang并行处理和内存模型](#golang并行处理和内存模型)
+  - [0. Processes and Threads](#0-processes-and-threads)
+  - [1. Goroutine](#1-goroutine)
+      - [1.1 Create a Goroutine](#11-create-a-goroutine)
+      - [1.2. 销毁Goroutine](#12-销毁goroutine)
+      - [1.3. Goroutine核心要点](#13-goroutine核心要点)
+      - [1.4. channel](#14-channel)
+  - [2. Lock 锁](#2-lock-锁)
+  - [3. Memory model](#3-memory-model)
+  - [4. package sync](#4-package-sync)
 
 go语言最好用的关键字：go, chan
 
-## Processes and Threads
+## 0. Processes and Threads
 
 - 进程：一个应用程序，一个为其所有资源(内存地址空间/设备/线程)而运行的容器。
 - 线程：一个进程从一个主线程开始，然后可以依次启动更多的线程，线程共享内存空间。
 
-## Goroutine
+## 1. Goroutine
 
-#### 1. Create a Goroutine
+#### 1.1 Create a Goroutine
 go关键字本质就是创建一个goroutine, 可以根据计算机核心来选择并行还是并发;
 
 `main()` 就是作为 goroutine 运行的。创建goroutine的例子：
@@ -31,7 +36,7 @@ func main(){
 }
 ```
 
-#### 2. 销毁Goroutine
+#### 1.2. 销毁Goroutine
 
 ```golang
 var s string
@@ -44,7 +49,7 @@ func main(){
 
 问题点: 没有用任何同步操作限制对s的赋值，因此其他的goroutine不一定哪呢个看到s的变化，需要用锁或channel这种同步机制来建立程序的执行顺序，即" goroutine"的并行化。
 
-#### 3. Goroutine核心要点
+#### 1.3. Goroutine核心要点
 
 1. 生命周期管理：
 - 知道它什么时候结束：
@@ -78,7 +83,7 @@ func serverApp(stop chan struct{}) error{
 - 并发：为多个线程在多个核心运行。
 
 
-## channel
+#### 1.4. channel
 
 channel通信是goroutine同步的主要方法。
 
@@ -106,7 +111,7 @@ func main(){
 
 
 
-## Lock 锁
+## 2. Lock 锁
 
 https://golang.org/pkg/sync/
 
@@ -143,7 +148,7 @@ func main() {
 ```
 
 
-## Memory model
+## 3. Memory model
 
 Must read reference:
 - https://golang.org/ref/mem
@@ -188,7 +193,7 @@ for i in range(100):
 go race command: `go build -race xx.go`
 Assembly processes: `go tool compile -S xx.go`
 
-## package sync
+## 4. package sync
 
 场景：cfg为包机全局对象，当很多goroutine同时访问时，存在data race，会看到不连续的内存输出。
 
