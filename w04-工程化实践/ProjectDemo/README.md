@@ -45,3 +45,7 @@
 └── test                      // test module
     └── test.go
 ```
+
+## Reference
+
+https://go-kratos.dev/#/quickstart

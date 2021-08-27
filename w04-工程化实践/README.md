@@ -1,13 +1,13 @@
 
 # Go工程化实践
 
-## 作业
+- [工程项目结构](#1-工程项目结构)
+- [API Design](#2-api设计)
+- [Config Manage](#3-配置管理)
+- [Package Manage](#4-包管理)
+- [Project Test](#5-测试)
 
-[Homework](ProjectDemo/README.md)
-
-Reference: https://go-kratos.dev/#/quickstart
-
-## 工程项目结构
+## 1. 工程项目结构
 
 - Must need to read: https://github.com/golang-standards/project-layout
 - 小玩具项目可不使用该规范，多人协作时除了根据本篇笔记规范，还应开发一个团队自用的kit-tool，用于快速生成项目模板
@@ -79,7 +79,7 @@ Reference: https://go-kratos.dev/#/quickstart
         - 资源初始化、注销、监听、关闭
         - 初始化redis mysql dao service log 监听信号
 
-#### 小破站 service app project - v1
+#### 1.1 小破站 service app project - v1
 
 ![逻辑依赖关系](image/blv1.png)
 
@@ -100,7 +100,7 @@ Reference: https://go-kratos.dev/#/quickstart
 - 项目依赖路径: model -> dao -> service -> api, 直到api需要做DTO对象转换
 - v1结论：1.理论上server层可以被干掉, 2.缺乏DTO->DO的对象转换
 
-#### 小破站 service app project - v2
+#### 1.2 小破站 service app project - v2
 
 ```
 ├── service
@@ -115,7 +115,7 @@ Reference: https://go-kratos.dev/#/quickstart
 ├── ...
 ```
 
-#### Lifecycle
+#### 1.3 Lifecycle
 
 一个完整化的工程项目，除了项目结构的思考，还有兼具项目服务生命周期的管理。
 
@@ -124,7 +124,7 @@ Reference:
 - https://blog.golang.org/wire
 
 
-## API设计
+## 2. API设计
 
 - Reference:
     - https://github.com/googleapis/googleapis
@@ -151,7 +151,7 @@ Reference:
 
 ![API Error](image/error.png)
 
-## 配置管理
+## 3. 配置管理
 
 - 环境变量
 - 静态配置
@@ -164,11 +164,11 @@ Reference:
     - 必选参数必填, 可选参数选填
 
 
-## 包管理
+## 4. 包管理
 
 Reference: https://github.com/gomods/athens
 
-## 测试
+## 5. 测试
 
 - 测试金字塔
     - 小型测试 - 单元测试 - kit库、中间件必须要
